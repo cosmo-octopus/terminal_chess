@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbalasan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:37:42 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/02/17 16:45:31 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:04:09 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "chess.h"
 
-int	ft_strlen(const char *str)
-{
-	int	i;
+// int	ft_strlen(const char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
+// 	i = 0;
+// 	while (str[i] != '\0')
+// 		i++;
+// 	return (i);
+// }
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -57,20 +57,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-char	*ft_strdup(const char *s1)
-{
-	char	*ptr;
-	int		i;
+// char	*ft_strdup(const char *s1)
+// {
+// 	char	*ptr;
+// 	int		i;
 
-	ptr = (char *)malloc(ft_strlen(s1) + 1 * sizeof(char));
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (*(s1 + i))
-	{
-		*(ptr + i) = *(s1 + i);
-		i++;
-	}
-	*(ptr + i) = '\0';
-	return (ptr);
-}
+// 	ptr = (char *)malloc(ft_strlen(s1) + 1 * sizeof(char));
+// 	if (!ptr)
+// 		return (NULL);
+// 	i = 0;
+// 	while (*(s1 + i))
+// 	{
+// 		*(ptr + i) = *(s1 + i);
+// 		i++;
+// 	}
+// 	*(ptr + i) = '\0';
+// 	return (ptr);
+// }
