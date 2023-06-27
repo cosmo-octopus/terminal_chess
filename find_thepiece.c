@@ -15,7 +15,7 @@ int final_pos_check(char **matrix, char color, char *position)
         return (1);
 }
 
-int find_therook(char **matrix, char color, char *position)
+char    *find_therook(char **matrix, char color, char *position)
 {
     int     j_pos = position[0] - 97;
     int     i_pos = position[1];
@@ -23,20 +23,32 @@ int find_therook(char **matrix, char color, char *position)
     int     j = j_pos;
     char    rook;
     int     possible_pieces = 0;
+    char    found_position[2];
 
     if (color == 'W')
         rook = 'R';
     else
         rook = 'r';
+
     while (j >= 0 && j <= j_pos)
     {
         if (matrix[i][j] == rook)
         {
             possible_pieces++;
-            break;
+            found_position[0] = i + '0';
+            found_position[1] = j + 97;
         }
         if (matrix[i][j] != ' ' && matrix[i][j] != rook)
             break;
         j--;
     }
+    while (j > j_pos && j <= 7 && possible_pieces < 2)
+    {
+        if (matrix[i][j] == rook)
+            possible_pieces++;
+        if (matrix[i][j] != ' ' && matrix[i][j] != rook)
+            break;
+        j++;
+    }
+
 }
