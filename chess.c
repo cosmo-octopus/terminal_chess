@@ -46,26 +46,44 @@ j = 0;
     }
 }
 
-int main(int argc, char **argv)
+int main()
 {
     char    **matrix;
     int     i;
     char    *cmd;
+    char    **cmd_parts;
+    char    *piece_position;
 
     matrix = (char **)malloc(sizeof(char *) * 8);
     for (i = 0; i < 8; i++)
         matrix[i] = (char *)malloc(sizeof(char) * 8);
     fill_matrix(matrix);
-    print_theboard(matrix);
-    // while (1)
-    // {
-    //     print_theboard(matrix);
-    //     cmd = get_next_line(STDIN_FILENO);
-    //     cmd_check(cmd);
-    //     //input check GNL 
-    //     //CHECK check
-    //     //command check -> error()
-    //     //change the matrix
-    //     //print
-    // }
+    matrix[6][7] = ' ';
+    // print_theboard(matrix);
+    while (1)
+    {
+        print_theboard(matrix);
+        printf ("Give the step\n");
+        cmd = get_next_line(STDIN_FILENO);
+        cmd_parts = input_parsing(cmd);
+        if (cmd_parts)
+        {
+            printf("CMD_PARTS %s %s\n", cmd_parts[0], cmd_parts[1]);
+            if (!check_position_range(cmd_parts[1]))
+            {
+                if (!final_pos_check(matrix, cmd_parts[0][0], cmd_parts[1]))
+                {
+                    piece_position = define_thepiece(matrix, cmd_parts[0], cmd_parts[1]);
+                    printf("PIECE POSITION: %s\n", piece_position);
+                    if (piece_position)
+                        printf("FOUND\n");
+                }
+            }
+        }
+        error();
+        //CHECK check
+        //command check -> error()
+        //change the matrix
+        //print
+    }
 }

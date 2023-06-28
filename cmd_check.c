@@ -1,23 +1,46 @@
 #include "chess.h"
 
-int define_thepiece(char **matrix, char *piece, char *position)
+int final_pos_check(char **matrix, char color, char *position)
 {
-    if (piece[0] != 'W' || piece[1] != 'B')
-        return (error());
+    int i = (position[1] - 56) * -1;
+    int j = position[0] - 97;
+
+    //printf("%d %d\n", i, j);
+    if (matrix[i][j] == ' ')
+        return (0);
+    if (color == 'W' && (matrix[i][j] >= 'a' && matrix[i][j] <= 'z'))
+        return (0);
+    else if (color == 'B' && (matrix[i][j] >= 'A' && matrix[i][j] <= 'Z'))
+        return (0);
+    else
+        return (1);
+}
+
+char    *define_thepiece(char **matrix, char *piece, char *position)
+{
+    printf("COLOR: %c\n", piece[0]);
+    if (piece[0] != 'W' && piece[0] != 'B')
+    {
+        error();
+        return (NULL);
+    }
     if (piece[1] == 'R')
         return (find_therook(matrix, piece[0], position));
-    else if (piece[1] == 'N')
-        return (find_thekinight(matrix, piece[0], position));
-    else if (piece[1] == 'B')
-        return (find_thebishop(matrix, piece[0], position));
-    else if (piece[1] == 'Q')
-        return (find_thequeen(matrix, piece[0], position));
-    else if (piece[1] == 'K')
-        return (find_theking(matrix, piece[0], position));
-    else if (piece[1] == 'P')
-        return (find_thepawn(matrix, piece[0], position));
+    // else if (piece[1] == 'N')
+    //     return (find_thekinight(matrix, piece[0], position));
+    // else if (piece[1] == 'B')
+    //     return (find_thebishop(matrix, piece[0], position));
+    // else if (piece[1] == 'Q')
+    //     return (find_thequeen(matrix, piece[0], position));
+    // else if (piece[1] == 'K')
+    //     return (find_theking(matrix, piece[0], position));
+    // else if (piece[1] == 'P')
+    //     return (find_thepawn(matrix, piece[0], position));
     else
-        return (error());
+    {
+        error();
+        return (NULL);
+    }
 }
 
 int check_position_range(char *position)

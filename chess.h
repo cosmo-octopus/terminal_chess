@@ -16,7 +16,8 @@ void    print_theboard(char **matrix);
 //________________//cmd_check.c//________________//
 char    **input_parsing(char *cmd);
 int     check_position_range(char *position);
-int     define_thepiece(char **matrix, char *piece, char *position);
+char    *define_thepiece(char **matrix, char *piece, char *position);
+int     final_pos_check(char **matrix, char color, char *position);
 //________________//ft_split.c//________________//
 char	**ft_split(char const *s, char c);
 void	ft_free(char **str);
@@ -25,7 +26,8 @@ int	    ft_strlen(const char *str);
 int	    ft_atoi(const char *str);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-//_______________//find_thepiece//_______________//
-int     find_therook(char **matrix, char color, char *position);
+//________________//find_therook//________________//
+char    *find_therook(char **matrix, char color, char *position);
+
 
 #endif
