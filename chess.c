@@ -59,6 +59,8 @@ int main()
         matrix[i] = (char *)malloc(sizeof(char) * 8);
     fill_matrix(matrix);
     matrix[6][7] = ' ';
+    matrix[6][1] = ' ';
+    matrix[1][6] = ' ';
     // print_theboard(matrix);
     while (1)
     {
@@ -68,22 +70,15 @@ int main()
         cmd_parts = input_parsing(cmd);
         if (cmd_parts)
         {
-            printf("CMD_PARTS %s %s\n", cmd_parts[0], cmd_parts[1]);
-            if (!check_position_range(cmd_parts[1]))
+            if (!check_position_range(cmd_parts[1]) && !check_position_range(cmd_parts[2]))
             {
-                if (!final_pos_check(matrix, cmd_parts[0][0], cmd_parts[1]))
+                if (!final_pos_check(matrix, cmd_parts[0][0], cmd_parts[2]))
                 {
-                    piece_position = define_thepiece(matrix, cmd_parts[0], cmd_parts[1]);
-                    printf("PIECE POSITION: %s\n", piece_position);
-                    if (piece_position)
-                        printf("FOUND\n");
+                    define_thepiece(matrix, cmd_parts[0], cmd_parts[1], cmd_parts[2]);
                 }
+                else
+                    error();
             }
         }
-        error();
-        //CHECK check
-        //command check -> error()
-        //change the matrix
-        //print
     }
 }

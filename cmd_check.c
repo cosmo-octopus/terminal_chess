@@ -1,5 +1,31 @@
 #include "chess.h"
 
+int define_thepiece(char **matrix, char *piece, char *start_pos, char *final_pos)
+{
+    if (piece[0] != 'W' && piece[0] != 'B')
+    {
+        error();
+        return (1);
+    }
+    if (piece[1] == 'R')
+        return(rook_action(matrix, piece, start_pos, final_pos));
+    // else if (piece[1] == 'N')
+    //     return (find_thekinight(matrix, piece[0], position));
+    else if (piece[1] == 'B')
+        return (bishop_action(matrix, piece, start_pos, final_pos));
+    // else if (piece[1] == 'Q')
+    //     return (find_thequeen(matrix, piece[0], position));
+    // else if (piece[1] == 'K')
+    //     return (find_theking(matrix, piece[0], position));
+    // else if (piece[1] == 'P')
+    //     return (find_thepawn(matrix, piece[0], position));
+    else
+    {
+        error();
+        return (1);
+    }
+}
+
 int final_pos_check(char **matrix, char color, char *position)
 {
     int i = (position[1] - 56) * -1;
@@ -14,33 +40,6 @@ int final_pos_check(char **matrix, char color, char *position)
         return (0);
     else
         return (1);
-}
-
-char    *define_thepiece(char **matrix, char *piece, char *position)
-{
-    printf("COLOR: %c\n", piece[0]);
-    if (piece[0] != 'W' && piece[0] != 'B')
-    {
-        error();
-        return (NULL);
-    }
-    if (piece[1] == 'R')
-        return (find_therook(matrix, piece[0], position));
-    // else if (piece[1] == 'N')
-    //     return (find_thekinight(matrix, piece[0], position));
-    // else if (piece[1] == 'B')
-    //     return (find_thebishop(matrix, piece[0], position));
-    // else if (piece[1] == 'Q')
-    //     return (find_thequeen(matrix, piece[0], position));
-    // else if (piece[1] == 'K')
-    //     return (find_theking(matrix, piece[0], position));
-    // else if (piece[1] == 'P')
-    //     return (find_thepawn(matrix, piece[0], position));
-    else
-    {
-        error();
-        return (NULL);
-    }
 }
 
 int check_position_range(char *position)
@@ -60,7 +59,7 @@ char    **input_parsing(char *cmd)
     cmd_parts = ft_split(cmd, ' ');
     while (cmd_parts[i])
         i++;
-    if (i != 2)
+    if (i != 3)
         return (NULL);
     return (cmd_parts);
 }
