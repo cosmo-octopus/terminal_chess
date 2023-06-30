@@ -144,7 +144,6 @@ int pawn_action(char **matrix, char *piece, char *start_pos, char *final_pos)
     int i_final = (final_pos[1] - 56) * -1;
     int check = 0;
 
-    printf("START: %d %d FINAL: %d %d\n", i_start, j_start, i_final, j_final);
     if (j_final == j_start)
     {
         if ((piece[0] == 'W' && i_final == i_start + 1)

@@ -16,9 +16,9 @@
 void    fill_matrix(char **matrix);
 //__________________//error.c//__________________//
 int     error();
-//_________________//valid_move//_________________//
+//_________________//valid_move.c//_________________//
 void    valid_move();
-//_______________//print_theboard//_______________//
+//_______________//print_theboard.c//_______________//
 void    print_firstandlast();
 void    print_theborderline();
 void    print_fromthematrix(char **matrix, int j, char c);
