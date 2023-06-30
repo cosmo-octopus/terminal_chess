@@ -28,8 +28,8 @@ char    **input_parsing(char *cmd);
 int     check_position_range(char *position);
 int     define_thepiece(char **matrix, char *piece, char *start_pos, char *final_pos);
 int     final_pos_check(char **matrix, char color, char *position);
-int     finalpos_path_check(char **matrix, char **cmd_parts);
 //________________//path_check.c//________________//
+int     path_check(char **matrix, char **cmd_parts);
 int     rook_path_check(char **matrix, char *start_pos, char *final_pos);
 int     bishop_path_check(char **matrix, char *start_pos, char *final_pos);
 //________________//ft_split.c//________________//
@@ -44,5 +44,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int     rook_action(char **matrix, char *piece, char *start_pos, char *final_pos);
 int     bishop_action(char **matrix, char *piece, char *start_pos, char *final_pos);
 int     knight_action(char **matrix, char *piece, char *start_pos, char *final_pos);
+int     queen_action(char **matrix, char *piece, char *start_pos, char *final_pos);
 
 #endif

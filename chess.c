@@ -61,6 +61,7 @@ int main()
     matrix[6][7] = ' ';
     matrix[6][1] = ' ';
     matrix[1][6] = ' ';
+    matrix[6][4] = ' ';
     while (1)
     {
         print_theboard(matrix);
@@ -71,9 +72,9 @@ int main()
         {
             if (!check_position_range(cmd_parts[1]) && !check_position_range(cmd_parts[2]))
             {
-                if (!finalpos_path_check(matrix, cmd_parts) && !final_pos_check(matrix, cmd_parts[0][0], cmd_parts[2]))
+                if (!path_check(matrix, cmd_parts) && !final_pos_check(matrix, cmd_parts[0][0], cmd_parts[2]))
                 {
-                    int k = define_thepiece(matrix, cmd_parts[0], cmd_parts[1], cmd_parts[2]);
+                    define_thepiece(matrix, cmd_parts[0], cmd_parts[1], cmd_parts[2]);
                 }
                 else
                     error();

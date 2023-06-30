@@ -79,3 +79,36 @@ int knight_action(char **matrix, char *piece, char *start_pos, char *final_pos)
         return (1);
     }
 }
+
+int queen_action(char **matrix, char *piece, char *start_pos, char *final_pos)
+{
+    int j_start = start_pos[0] - 97;
+    int i_start = (start_pos[1] - 56) * -1;
+    int j_final = final_pos[0] - 97;
+    int i_final = (final_pos[1] - 56) * -1;
+    int diff = j_final - j_start;
+    int check = 0;
+
+    if (diff < 0)
+        diff *= -1;
+    if (j_start == j_final || i_start == i_final)
+        check++;
+    else if ((i_final == i_start + diff && j_final == j_start + diff)
+        || (i_final == i_start - diff && j_final == j_start + diff)
+        || (i_final == i_start + diff && j_final == j_start - diff)
+        || (i_final == i_start - diff && j_final == j_start - diff))
+    {
+        check++;
+    }
+    if (check > 0)
+    {
+        valid_move();
+        matrix[i_start][j_start] = ' ';
+        if (piece[0] == 'W')
+            matrix[i_final][j_final] = 'Q';
+        else if (piece[0] == 'B')
+            matrix[i_final][j_final] = 'q';
+        return (0);
+    }
+    return (1);
+}

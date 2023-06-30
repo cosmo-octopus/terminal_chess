@@ -1,5 +1,29 @@
 #include "chess.h"
 
+int path_check(char **matrix, char **cmd_parts)
+{
+    char    piece = cmd_parts[0][1];
+    int i = 0;
+    int j = 0;
+    int queen;
+
+    if (piece == 'N')
+        return (0);
+    else if (piece == 'R')
+        return (rook_path_check(matrix, cmd_parts[1], cmd_parts[2]));
+    else if (piece == 'B')
+        return (bishop_path_check(matrix, cmd_parts[1], cmd_parts[2]));
+    else if (piece == 'Q')
+    {
+        if (!rook_path_check(matrix, cmd_parts[1], cmd_parts[2]) 
+            || !bishop_path_check(matrix, cmd_parts[1], cmd_parts[2]))
+        {
+            return (0);
+        }
+    }
+    return (1);
+}
+
 int rook_path_check(char **matrix, char *start_pos, char *final_pos)
 {
     int j_start = start_pos[0] - 97;
