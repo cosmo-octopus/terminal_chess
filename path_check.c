@@ -21,6 +21,11 @@ int path_check(char **matrix, char **cmd_parts)
             return (0);
         }
     }
+    else if (piece == 'K')
+        {
+            // CHECK CHECK !!
+            return (0);
+        }
     return (1);
 }
 

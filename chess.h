@@ -27,6 +27,7 @@ void    print_theboard(char **matrix);
 char    **input_parsing(char *cmd);
 int     check_position_range(char *position);
 int     define_thepiece(char **matrix, char *piece, char *start_pos, char *final_pos);
+int     start_pos_check(char **matrix, char *piece, char *start_pos);
 int     final_pos_check(char **matrix, char color, char *position);
 //________________//path_check.c//________________//
 int     path_check(char **matrix, char **cmd_parts);
@@ -45,5 +46,6 @@ int     rook_action(char **matrix, char *piece, char *start_pos, char *final_pos
 int     bishop_action(char **matrix, char *piece, char *start_pos, char *final_pos);
 int     knight_action(char **matrix, char *piece, char *start_pos, char *final_pos);
 int     queen_action(char **matrix, char *piece, char *start_pos, char *final_pos);
+int     king_action(char **matrix, char *piece, char *start_pos, char *final_pos);
 
 #endif

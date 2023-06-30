@@ -18,8 +18,8 @@ int define_thepiece(char **matrix, char *piece, char *start_pos, char *final_pos
         printf("QUEEN PIECE\n");
         return (queen_action(matrix, piece, start_pos, final_pos));
     }
-    // else if (piece[1] == 'K')
-    //     return (find_theking(matrix, piece[0], position));
+    else if (piece[1] == 'K')
+        return (king_action(matrix, piece, start_pos, final_pos));
     // else if (piece[1] == 'P')
     //     return (find_thepawn(matrix, piece[0], position));
     else
@@ -44,6 +44,22 @@ int final_pos_check(char **matrix, char color, char *position)
         return (0);
     else
         return (1);
+}
+
+int start_pos_check(char **matrix, char *piece, char *start_pos)
+{
+    int j = start_pos[0] - 97;
+    int i = (start_pos[1] - 56) * -1;
+    char    color;
+
+    if (piece[0] == 'W')
+        color = piece[1];
+    else if (piece[0] == 'B')
+        color = piece[1] + 32;
+
+    if (matrix[i][j] == color)
+        return (0);
+    return (1);
 }
 
 int check_position_range(char *position)
