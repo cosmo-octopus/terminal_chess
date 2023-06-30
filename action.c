@@ -35,7 +35,7 @@ int bishop_action(char **matrix, char *piece, char *start_pos, char *final_pos)
     if (diff < 0)
         diff *= -1;
     if ((i_final == i_start + diff && j_final == j_start + diff)
-        || (i_final == i_start - diff && j_final == j_start - diff)
+        || (i_final == i_start - diff && j_final == j_start + diff)
         || (i_final == i_start + diff && j_final == j_start - diff)
         || (i_final == i_start - diff && j_final == j_start - diff))
     {

@@ -36,6 +36,8 @@ int finalpos_path_check(char **matrix, char **cmd_parts)
         return (0);
     else if (piece == 'R')
         return (rook_path_check(matrix, cmd_parts[1], cmd_parts[2]));
+    else if (piece == 'B')
+        return (bishop_path_check(matrix, cmd_parts[1], cmd_parts[2]));
     return (1);
 }
 
@@ -44,7 +46,6 @@ int final_pos_check(char **matrix, char color, char *position)
     int i = (position[1] - 56) * -1;
     int j = position[0] - 97;
 
-    //printf("%d %d\n", i, j);
     if (matrix[i][j] == ' ')
         return (0);
     if (color == 'W' && (matrix[i][j] >= 'a' && matrix[i][j] <= 'z'))

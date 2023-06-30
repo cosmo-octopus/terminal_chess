@@ -42,3 +42,42 @@ int rook_path_check(char **matrix, char *start_pos, char *final_pos)
     }
     return (0);
 }
+
+int bishop_path_check(char **matrix, char *start_pos, char *final_pos)
+{
+    int j_start = start_pos[0] - 97;
+    int i_start = (start_pos[1] - 56) * -1;
+    int j_final = final_pos[0] - 97;
+    int i_final = (final_pos[1] - 56) * -1;
+    int i = i_start, j = j_start;
+
+    while (i_start > i_final && j_start > j_final)
+    {
+        if (j_start != j && matrix[i_start][j_start] != ' ')
+            return (1);
+        i_start--;
+        j_start--;
+    }
+    while (i_start > i_final && j_start < j_final)
+    {
+        if (j_start != j && matrix[i_start][j_start] != ' ')
+            return (1);
+        i_start--;
+        j_start++;
+    }
+    while (i_start < i_final && j_start > j_final)
+    {
+        if (j_start != j && matrix[i_start][j_start] != ' ')
+            return (1);
+        i_start++;
+        j_start--;
+    }
+    while (i_start < i_final && j_start < j_final)
+    {
+        if (j_start != j && matrix[i_start][j_start] != ' ')
+            return (1);
+        i_start++;
+        j_start++;
+    }
+    return (0);
+}

@@ -73,7 +73,7 @@ int main()
             {
                 if (!finalpos_path_check(matrix, cmd_parts) && !final_pos_check(matrix, cmd_parts[0][0], cmd_parts[2]))
                 {
-                    define_thepiece(matrix, cmd_parts[0], cmd_parts[1], cmd_parts[2]);
+                    int k = define_thepiece(matrix, cmd_parts[0], cmd_parts[1], cmd_parts[2]);
                 }
                 else
                     error();
