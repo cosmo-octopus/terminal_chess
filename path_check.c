@@ -27,7 +27,8 @@ int path_check(char **matrix, char **cmd_parts)
         return (0);
     }
     else if (piece == 'P')
-        return (pawn_path_check(matrix, cmd_parts[2]));
+        return (0);
+        //return (pawn_path_check(matrix, cmd_parts[1], cmd_parts[2]));
     return (1);
 }
 
@@ -113,12 +114,15 @@ int bishop_path_check(char **matrix, char *start_pos, char *final_pos)
     return (0);
 }
 
-int pawn_path_check(char **matrix, char *final_pos)
-{
-    int j = final_pos[0] - 97;
-    int i = (final_pos[1] - 56) * -1;
+// int pawn_path_check(char **matrix, char *start_pos, char *final_pos)
+// {
+//     int j_start = start_pos[0] - 97;
+//     int i_start = (start_pos[1] - 56) * -1;
+//     int j_final = final_pos[0] - 97;
+//     int i_final = (final_pos[1] - 56) * -1;
 
-    if (matrix[i][j] != ' ')
-        return (1);
-    return (0);
-}
+//     if (j_start )
+
+
+//     return (0);
+// }
