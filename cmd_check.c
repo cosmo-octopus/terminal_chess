@@ -14,22 +14,17 @@ int define_thepiece(char **matrix, char *piece, char *start_pos, char *final_pos
     else if (piece[1] == 'B')
         return (bishop_action(matrix, piece, start_pos, final_pos));
     else if (piece[1] == 'Q')
-    {
-        printf("QUEEN PIECE\n");
         return (queen_action(matrix, piece, start_pos, final_pos));
-    }
     else if (piece[1] == 'K')
         return (king_action(matrix, piece, start_pos, final_pos));
-    // else if (piece[1] == 'P')
-    //     return (find_thepawn(matrix, piece[0], position));
+    else if (piece[1] == 'P')
+        return (pawn_action(matrix, piece, start_pos, final_pos));
     else
     {
         error();
         return (1);
     }
 }
-
-
 
 int final_pos_check(char **matrix, char color, char *position)
 {

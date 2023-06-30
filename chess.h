@@ -33,6 +33,7 @@ int     final_pos_check(char **matrix, char color, char *position);
 int     path_check(char **matrix, char **cmd_parts);
 int     rook_path_check(char **matrix, char *start_pos, char *final_pos);
 int     bishop_path_check(char **matrix, char *start_pos, char *final_pos);
+int     pawn_path_check(char **matrix, char *final_pos);
 //________________//ft_split.c//________________//
 char	**ft_split(char const *s, char c);
 void	ft_free(char **str);
@@ -47,5 +48,6 @@ int     bishop_action(char **matrix, char *piece, char *start_pos, char *final_p
 int     knight_action(char **matrix, char *piece, char *start_pos, char *final_pos);
 int     queen_action(char **matrix, char *piece, char *start_pos, char *final_pos);
 int     king_action(char **matrix, char *piece, char *start_pos, char *final_pos);
+int     pawn_action(char **matrix, char *piece, char *start_pos, char *final_pos);
 
 #endif

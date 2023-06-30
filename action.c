@@ -17,11 +17,8 @@ int rook_action(char **matrix, char *piece, char *start_pos, char *final_pos)
             matrix[i_final][j_final] = 'r';
         return (0);
     }
-    else
-    {
-        error();
-        return (1);
-    }
+    error();
+    return (1);
 }
 
 int bishop_action(char **matrix, char *piece, char *start_pos, char *final_pos)
@@ -47,11 +44,8 @@ int bishop_action(char **matrix, char *piece, char *start_pos, char *final_pos)
             matrix[i_final][j_final] = 'b';
         return (0);
     }
-    else
-    {
-        error();
-        return (1);
-    }
+    error();
+    return (1);
 }
 
 int knight_action(char **matrix, char *piece, char *start_pos, char *final_pos)
@@ -72,11 +66,8 @@ int knight_action(char **matrix, char *piece, char *start_pos, char *final_pos)
             matrix[i_final][j_final] = 'n';
         return (0);
     }
-    else
-    {
-        error();
-        return (1);
-    }
+    error();
+    return (1);
 }
 
 int queen_action(char **matrix, char *piece, char *start_pos, char *final_pos)
@@ -109,6 +100,7 @@ int queen_action(char **matrix, char *piece, char *start_pos, char *final_pos)
             matrix[i_final][j_final] = 'q';
         return (0);
     }
+    error();
     return (1);
 }
 
@@ -137,5 +129,41 @@ int king_action(char **matrix, char *piece, char *start_pos, char *final_pos)
             matrix[i_final][j_final] = 'k';
         return (0);
     }
+    error();
+    return (1);
+}
+
+int pawn_action(char **matrix, char *piece, char *start_pos, char *final_pos)
+{
+    int j_start = start_pos[0] - 97;
+    int i_start = (start_pos[1] - 56) * -1;
+    int j_final = final_pos[0] - 97;
+    int i_final = (final_pos[1] - 56) * -1;
+    int check = 0;
+
+    if (i_final == i_start + 1 && j_final == j_start)
+        check++;
+    else if ((start_pos[1] == '7' || start_pos[1] == '2')
+        && (i_final == i_start + 2 && j_final == j_start))
+    {
+        check++;
+    }
+    else if ((((i_start == i_final) && ((j_start == j_final - 1) || (j_start = j_final + 1)))
+        || ((j_start == j_final) && ((i_start == i_final + 1) || (i_start = i_final - 1))))
+        && matrix[i_final][j_final] != ' ')
+    {
+        check++;
+    }
+    if (check > 0)
+    {
+        valid_move();
+        matrix[i_start][j_start] = ' ';
+        if (piece[0] == 'W')
+            matrix[i_final][j_final] = 'K';
+        else if (piece[0] == 'B')
+            matrix[i_final][j_final] = 'k';
+        return (0);
+    }
+    error();
     return (1);
 }

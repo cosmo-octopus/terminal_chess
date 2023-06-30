@@ -62,6 +62,7 @@ int main()
     matrix[6][1] = ' ';
     matrix[1][6] = ' ';
     matrix[6][4] = ' ';
+    matrix[5][6] = 'P';
     while (1)
     {
         print_theboard(matrix);
