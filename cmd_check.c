@@ -9,8 +9,8 @@ int define_thepiece(char **matrix, char *piece, char *start_pos, char *final_pos
     }
     if (piece[1] == 'R')
         return(rook_action(matrix, piece, start_pos, final_pos));
-    // else if (piece[1] == 'N')
-    //     return (find_thekinight(matrix, piece[0], position));
+    else if (piece[1] == 'N')
+        return (knight_action(matrix, piece, start_pos, final_pos));
     else if (piece[1] == 'B')
         return (bishop_action(matrix, piece, start_pos, final_pos));
     // else if (piece[1] == 'Q')
@@ -24,6 +24,19 @@ int define_thepiece(char **matrix, char *piece, char *start_pos, char *final_pos
         error();
         return (1);
     }
+}
+
+int finalpos_path_check(char **matrix, char **cmd_parts)
+{
+    char    piece = cmd_parts[0][1];
+    int i = 0;
+    int j = 0;
+
+    if (piece == 'N')
+        return (0);
+    else if (piece == 'R')
+        return (rook_path_check(matrix, cmd_parts[1], cmd_parts[2]));
+    return (1);
 }
 
 int final_pos_check(char **matrix, char color, char *position)
