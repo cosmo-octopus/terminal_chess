@@ -1,4 +1,4 @@
-#include "chess.h"
+#include "../includes/chess.h"
 
 void    to_free(char **matrix, int i)
 {

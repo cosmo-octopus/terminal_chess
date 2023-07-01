@@ -1,4 +1,4 @@
-#include "chess.h"
+#include "../includes/chess.h"
 
 void    change_king_pos(char **cmd_parts, int *king_pos)
 {

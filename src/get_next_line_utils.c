@@ -6,11 +6,11 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 14:37:42 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/06/27 19:04:09 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/07/01 21:47:28 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "chess.h"
+#include "../includes/chess.h"
 
 // int	ft_strlen(const char *str)
 // {

@@ -1,4 +1,4 @@
-#include "chess.h"
+#include "../includes/chess.h"
 
 void    valid_move()
 {

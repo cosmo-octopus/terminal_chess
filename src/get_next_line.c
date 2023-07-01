@@ -6,11 +6,11 @@
 /*   By: hbalasan <hbalasan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:20:55 by hbalasan          #+#    #+#             */
-/*   Updated: 2023/06/28 20:04:17 by hbalasan         ###   ########.fr       */
+/*   Updated: 2023/07/01 21:47:28 by hbalasan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "chess.h"
+#include "../includes/chess.h"
 
 char	*ft_get_remainder(char *buffer)
 {

@@ -1,4 +1,4 @@
-#include "chess.h"
+#include "../includes/chess.h"
 
 int rook_action(char **matrix, char *piece, char *start_pos, char *final_pos)
 {

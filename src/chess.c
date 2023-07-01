@@ -52,12 +52,8 @@ int main()
     int     i;
     char    *cmd;
     char    **cmd_parts;
-    char    *piece_position;
-    int     color_flag = 0;
-    int     error_flag;
     int    *king_pos_white = NULL;
     int    *king_pos_black = NULL;
-    int     check_flag = 0;
 
     matrix = (char **)malloc(sizeof(char *) * 8);
     for (i = 0; i < 8; i++)
@@ -70,7 +66,7 @@ int main()
     king_pos_black = (int *)malloc(sizeof(int) * 2);
     king_pos_black[0] = 7;
     king_pos_black[1] = 4;
-
+    
     while (1)
     {
         print_theboard(matrix);

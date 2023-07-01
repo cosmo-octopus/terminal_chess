@@ -1,11 +1,8 @@
-#include "chess.h"
+#include "../includes/chess.h"
 
 int path_check(char **matrix, char **cmd_parts)
 {
     char    piece = cmd_parts[0][1];
-    int i = 0;
-    int j = 0;
-    int queen;
 
     if (piece == 'N')
         return (0);

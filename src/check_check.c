@@ -1,4 +1,4 @@
-#include "chess.h"
+#include "../includes/chess.h"
 #include <string.h>
 
 static void fill_straight(char **matrix, int i_king, int j_king, Color color);

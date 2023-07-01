@@ -1,4 +1,4 @@
-#include "chess.h"
+#include "../includes/chess.h"
 
 int define_thepiece(char **matrix, char *piece, char *start_pos, char *final_pos)
 {
@@ -45,7 +45,7 @@ int start_pos_check(char **matrix, char *piece, char *start_pos)
 {
     int j = start_pos[0] - 97;
     int i = (start_pos[1] - 56) * -1;
-    char    color;
+    char    color = 0;
 
     if (piece[0] == 'W')
         color = piece[1];
