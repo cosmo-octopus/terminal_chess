@@ -22,8 +22,7 @@ int path_check(char **matrix, char **cmd_parts)
     }
     else if (piece == 'K')
     {
-        // CHECK CHECK !!
-        return (0);
+        return (king_path_check(cmd_parts));
     }
     else if (piece == 'P')
         return (0);
@@ -109,4 +108,21 @@ int bishop_path_check(char **matrix, char *start_pos, char *final_pos)
         j_start++;
     }
     return (0);
+}
+
+int  king_path_check(char **cmd_parts)
+{
+    int j_start = cmd_parts[1][0] - 97;
+    int i_start = (cmd_parts[1][1] - 56) * -1;
+    int j_final = cmd_parts[2][0] - 97;
+    int i_final = (cmd_parts[2][1] - 56) * -1;
+
+    if ((j_final == j_start  && (i_final == i_start - 1 || i_final == i_start + 1))
+        || (i_final == i_start && (j_final == j_start - 1 || j_final == j_start + 1))
+        || (i_final == i_start + 1 && j_final == j_start + 1)
+        || (i_final == i_start + 1 && j_final == j_start - 1)
+        || (i_final == i_start - 1 && j_final == j_start + 1)
+        || (i_final == i_start - 1 && j_final == j_start - 1))
+        return (0);
+    return (1);
 }

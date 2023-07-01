@@ -55,15 +55,24 @@ int main()
     char    *piece_position;
     int     color_flag = 0;
     int     error_flag;
-    char    *king_pos_white;
-    char    *king_pos_black;
+    int    *king_pos_white = NULL;
+    int    *king_pos_black = NULL;
     int     check_flag = 0;
 
     matrix = (char **)malloc(sizeof(char *) * 8);
     for (i = 0; i < 8; i++)
         matrix[i] = (char *)malloc(sizeof(char) * 8);
     fill_matrix(matrix);
-
+    matrix[1][4] = ' ';
+    matrix[1][3] = ' ';
+    matrix[6][4] = ' ';
+    matrix[6][3] = ' ';
+    king_pos_white = (int *)malloc(sizeof(int) * 2);
+    king_pos_white[0] = 0;
+    king_pos_white[1] = 4;
+    king_pos_black = (int *)malloc(sizeof(int) * 2);
+    king_pos_black[0] = 7;
+    king_pos_black[1] = 4;
     while (1)
     {
         print_theboard(matrix);
@@ -73,6 +82,13 @@ int main()
             printf("TURN TO PLAY: BLACK\n");
         cmd = get_next_line(STDIN_FILENO);
         cmd_parts = input_parsing(cmd);
+        if (cmd_parts[0][1] == 'K')
+        {
+            if (cmd_parts[0][0] == 'W')
+                change_king_pos(cmd_parts, king_pos_white);
+            if (cmd_parts[0][0] == 'B')
+                change_king_pos(cmd_parts, king_pos_black);
+        }
         if (cmd_parts && ((i % 2 == 0 && cmd_parts[0][0] == 'W') || (i % 2 != 0 && cmd_parts[0][0] == 'B')))
         {
             if (!check_position_range(cmd_parts[1]) && !check_position_range(cmd_parts[2]))
@@ -82,6 +98,10 @@ int main()
                 {
                     if (!define_thepiece(matrix, cmd_parts[0], cmd_parts[1], cmd_parts[2]))
                         i++;
+                    if (cmd_parts[0][1] == 'W')
+                        king_checked(matrix, king_pos_white[0], king_pos_white[1], WHITE);
+                    if (cmd_parts[0][1] == 'B')
+                        king_checked(matrix, king_pos_black[0], king_pos_black[1], BLACK);
                 }
                 else
                     error();
